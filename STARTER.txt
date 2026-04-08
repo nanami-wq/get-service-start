@@ -1,0 +1,12 @@
+从 Hai-Service 抽出的地基骨架（Gin + Viper + JWT + GORM/MySQL + 注册/登录/me）。
+
+使用步骤：
+1. 复制 config/app.yaml.example 为 config/app.yaml，填写 mysql、jwt.secret。
+2. 创建空数据库后执行：go run .  （启动时会 AutoMigrate users 表）
+3. 若仓库 fork 到别的账号：把 go.mod 的 module 与所有 import 里的 github.com/nanami-wq/get-service-start 改成你的路径。
+
+接口：
+- GET  /ping
+- POST /api/auth/register   JSON: username, email, password
+- POST /api/auth/login      JSON: account（用户名或邮箱）, password
+- GET  /api/auth/me         Header: Authorization: Bearer <token>
